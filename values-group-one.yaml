@@ -10,12 +10,21 @@ clusterGroup:
     - config-demo
     - hello-world
     - golang-external-secrets
+    - observability-zaga
+    - observability-datamesh
+    - observability-otel
+    - openshift-operators
   # The only subscription on spokes is gitops which gets managed by ACM
   # subscriptions:
   projects:
     - eso
     - config-demo
     - hello-world
+    - observability-zaga
+    - observability-datamesh
+    - observability-otel
+    - openshift-operators
+    
   applications:
     golang-external-secrets:
       name: golang-external-secrets
@@ -33,6 +42,101 @@ clusterGroup:
       namespace: hello-world
       project: hello-world
       path: charts/all/hello-world
+    kafka:
+      name: kafka
+      namespace: openshift-operators
+      project: openshift-operators
+      path: charts/all/kafka
+
+    opentelementry:
+      name: opentelementry
+      namespace: observability-otel
+      project: observability-otel
+      path: charts/all/otel-collector
+
+    minio:
+      name: minio
+      namespace: observability-datamesh
+      project: observability-datamesh
+      path: charts/all/datamesh/minio
+
+    hive-metastore:
+      name: hive-metastore
+      namespace: observability-datamesh
+      project: observability-datamesh
+      path: charts/all/datamesh/hive-metastore
+
+    trino:
+      name: hive-metastore
+      namespace: observability-datamesh
+      project: observability-datamesh
+      path: charts/all/datamesh/trino
+
+    keycloak:
+      name: keycloak
+      namespace: observability-datamesh
+      project: observability-datamesh
+      path: charts/all/datamesh/keycloak
+
+    redis:
+      name: redis
+      namespace: observability-datamesh
+      project: observability-datamesh
+      path: charts/all/redis
+
+    admin:
+      name: admin
+      namespace: observability-zaga
+      project: observability-zaga
+      path: charts/all/admin
+
+    apm:
+      name: apm
+      namespace: observability-zaga
+      project: observability-zaga
+      path: charts/all/apm
+
+    case-manage:
+      name: casemanage
+      namespace: observability-zaga
+      project: observability-zaga
+      path: charts/all/case-management
+
+    edge:
+      name: edge
+      namespace: observability-zaga
+      project: observability-zaga
+      path: charts/all/edge
+
+    infra:
+      name: infra
+      namespace: observability-zaga
+      project: observability-zaga
+      path: charts/all/infra
+
+    keycloak-dashboard:
+      name: keycloak-dashboard
+      namespace: observability-zaga
+      project: observability-zaga
+      path: charts/all/keycloak/charts
+
+    portal:
+      name: portal
+      namespace: observability-zaga
+      project: observability-zaga
+      path: charts/all/portal
+
+    sustainability:
+      name: sustainability
+      namespace: observability-zaga
+      project: observability-zaga
+      path: charts/all/sustainability
+
+    websocket:
+      name: websocket
+      namespace: observability-zaga
+      project: observability-zaga
+      path: charts/all/websocket
   imperative:
     # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
     # The default schedule is every 10 minutes: imperative.schedule

@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-service
+  labels:
+    app: central-redis
+    release: {{ .Release.Name }}
+spec:
+  ports:
+    - name: redis
+      port: 6379
+      targetPort: 6379
+      protocol: TCP
+  selector:
+    app: central-redis
+    release: {{ .Release.Name }}
+  {{- if .Values.loadBalancerService.enabled }}
+  type: LoadBalancer
+  {{- if .Values.loadBalancerService.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.loadBalancerService.loadBalancerIP }}
+  {{- end }}
+  {{- else }}
+  type: ClusterIP
+  {{- end }}
