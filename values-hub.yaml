@@ -121,7 +121,7 @@ clusterGroup:
       name: hive-metastore
       namespace: observability-datamesh
       project: observability-datamesh
-      path: charts/all/datamesh/hive-metastore
+      path: charts/all/hive-metastore
 
     trino:
       name: hive-metastore
