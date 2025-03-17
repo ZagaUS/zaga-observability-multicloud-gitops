@@ -1,41 +1,31 @@
+{{- if .Values.order-srv.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: order-vendor-sample
+  name: {{ .Chart.Name }}
   labels:
-    app: order-vendor-sample
+    app: {{ .Chart.Name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: order-vendor-sample
+      app: {{ .Chart.Name }}
   template:
     metadata:
       labels:
-        app: order-vendor-sample
+        app: {{ .Chart.Name }}
       annotations:
         instrumentation.opentelemetry.io/inject-java: 'true'
+
     spec:
-      imagePullSecrets: []
-      serviceAccountName: ""
-      securityContext: {}
       containers:
-        - name: order-vendor-sample
-          image: quay.io/zagaos/order-vendor-sample:errortestcase-1
-          imagePullPolicy: IfNotPresent
-          securityContext: {}
-          ports:
-            - name: http
-              containerPort: 5089
-              protocol: TCP
-          envFrom:
-            - configMapRef:
-                name: order-vendor-sample-configmap
-          readinessProbe:
-            {}
-          livenessProbe:
-            {}
-          resources: {}
-      nodeSelector: {}
-      tolerations: []
-      affinity: {}
+      - name: {{ .Values.image.query.name  }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 5089
+        envFrom:
+        - configMapRef:
+            name: {{ .Chart.Name }}-configmap
+
+     
+{{- end }}

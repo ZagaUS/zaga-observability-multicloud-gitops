@@ -17,9 +17,9 @@ route:
 
 configmapEnv:
   data:
-      POSTGRES_URL: jdbc:postgresql://testcase-postgres.office-management.svc.cluster.local:5432/zagadb
+      POSTGRES_URL: jdbc:postgresql://testcase-postgres.observability-testcase.svc.cluster.local:5432/zagadb
       POSTGRES_USER: zaga
       POSTGRES_PASSWORD: zaga123$
-      APP_APIURL: http://order-srv-3.office-management.svc.cluster.local/orders/getOrders
+      APP_APIURL: http://order-srv-3.observability-testcase.svc.cluster.local/orders/getOrders
 vendor-srv:
   enabled: true

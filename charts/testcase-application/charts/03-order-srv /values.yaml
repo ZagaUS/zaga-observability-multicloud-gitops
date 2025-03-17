@@ -1,8 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: quay.io/zagaos/kafka-observ-testcase
-  tag: new-topicconf
+  repository: quay.io/zagaos/order-vendor-sample:order-test-3
   pullPolicy: IfNotPresent
 
 
@@ -21,5 +20,5 @@ configmapEnv:
     POSTGRES_USER: zaga
     POSTGRES_PASSWORD: zaga123$
 
-kafka-srv:
+order-srv:
   enabled: true

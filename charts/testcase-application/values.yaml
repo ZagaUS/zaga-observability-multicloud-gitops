@@ -2,94 +2,28 @@ order-srv-1:
 
   replicaCount: 1
 
-  containerName: ""
-
   image:
-    registry: quay.io
-    username: zagaos
-    name: order-vendor-sample
+    repository: quay.io/zagaos/order-vendor-sample:errortestcase-1
     pullPolicy: IfNotPresent
-    tag: errortestcase-1
-    strategy: ""
-  languageFramework: spring-boot
 
-  imagePullSecrets: []
-  nameOverride: ""
-  fullnameOverride: ""
-
-  podAnnotations:
-    instrumentation.opentelemetry.io/inject-java: 'true'
-
-  podSecurityContext: {}
-
-  securityContext: {}
-
-  serviceAccount:
-    create: false
-    annotations: {}
-    name: ""
-
-
-  ports:
-    - name: http
-      subdomainName: order-srv-1
-      port: 5089
-      protocol: TCP
-      targetPort: 5089
-      routePolicy:
-        termination: edge
-        insecureEdgeTerminationPolicy: Redirect
 
   service:
-    - enabled: true
-      serviceType: ClusterIP
-      name: order-srv
-    - enabled: false
-      serviceType: LoadBalancer
-      name: order-srv-lb
+    type: ClusterIP
+    port: 5089
 
-  routes:
+  route:
     enabled: true
-    tls: true
-    annotations: {}
+    subdomainName: order-srv-1
 
-  ingress:
-    enabled: false
-    className: ""
-    tls: false
-    annotations: {}
-
-  secretsEnv: {}
 
   configmapEnv:
-    - name: ""
-      mount: ""
-      mountPath: ""
-      data:
-        POSTGRES_PASSWORD: zaga123$
-        POSTGRES_URL: jdbc:postgresql://testcase-postgres.office-management.svc.cluster.local:5432/zagadb
-        POSTGRES_USER: zaga
+    data:
+      POSTGRES_PASSWORD: zaga123$
+      POSTGRES_URL: jdbc:postgresql://testcase-postgres.observability-testcase.svc.cluster.local:5432/zagadb
+      POSTGRES_USER: zaga
 
-  probes:
-    readiness:
-    liveness:
-
-  volumes: {}
-
-  resources: {}
-
-  autoscaling:
-    enabled: false
-    minReplicas: 1
-    maxReplicas: 3
-    targetCPUUtilizationPercentage: 80
-    # targetMemoryUtilizationPercentage: 80
-
-  nodeSelector: {}
-
-  tolerations: []
-
-  affinity: {}
+  order-srv:
+    enabled: true
 
 ####################################################################
 
@@ -97,94 +31,28 @@ order-srv-2:
 
   replicaCount: 1
 
-  containerName: ""
-
   image:
-    registry: quay.io
-    username: zagaos
-    name: order-vendor-sample
+    repository: quay.io/zagaos/order-vendor-sample:order-test-2
     pullPolicy: IfNotPresent
-    tag: order-test-2
-    strategy: ""
-  languageFramework: spring-boot
-  imagePullSecrets: []
-  nameOverride: ""
-  fullnameOverride: ""
-  args: []
 
-  podAnnotations:
-    instrumentation.opentelemetry.io/inject-java: 'true'
-
-  podSecurityContext: {}
-
-  securityContext: {}
-
-  serviceAccount:
-    create: false
-    annotations: {}
-    name: ""
-
-
-  ports:
-    - name: http
-      subdomainName: order-srv-2
-      port: 5089
-      protocol: TCP
-      targetPort: 5089
-      routePolicy:
-        termination: edge
-        insecureEdgeTerminationPolicy: Redirect
 
   service:
-    - enabled: true
-      serviceType: ClusterIP
-      name: order-srv-2
-    - enabled: false
-      serviceType: LoadBalancer
-      name: order-srv-2-lb
+    type: ClusterIP
+    port: 5089
 
-  routes:
+  route:
     enabled: true
-    tls: true
-    annotations: {}
+    subdomainName: order-srv-2
 
-  ingress:
-    enabled: false
-    className: ""
-    tls: false
-    annotations: {}
-
-  secretsEnv: {}
 
   configmapEnv:
-    - name: ""
-      mount: ""
-      mountPath: ""
-      data:
-        POSTGRES_URL: jdbc:postgresql://testcase-postgres.office-management.svc.cluster.local:5432/zagadb
-        POSTGRES_USER: zaga
-        POSTGRES_PASSWORD: zaga123$
+    data:
+      POSTGRES_URL: jdbc:postgresql://testcase-postgres.observability-testcase.svc.cluster.local:5432/zagadb
+      POSTGRES_USER: zaga
+      POSTGRES_PASSWORD: zaga123$
 
-  probes:
-    readiness:
-    liveness:
-
-  volumes: {}
-
-  resources: {}
-
-  autoscaling:
-    enabled: false
-    minReplicas: 1
-    maxReplicas: 3
-    targetCPUUtilizationPercentage: 80
-    # targetMemoryUtilizationPercentage: 80
-
-  nodeSelector: {}
-
-  tolerations: []
-
-  affinity: {}
+  order-srv:
+    enabled: true
 
 
 #######################################################################
@@ -193,94 +61,28 @@ order-srv-3:
 
   replicaCount: 1
 
-  containerName: ""
-
   image:
-    registry: quay.io
-    username: zagaos
-    name: order-vendor-sample
+    repository: quay.io/zagaos/order-vendor-sample:order-test-3
     pullPolicy: IfNotPresent
-    tag: order-test-3
-    strategy: ""
-  languageFramework: spring-boot
-  imagePullSecrets: []
-  nameOverride: ""
-  fullnameOverride: ""
-  args: []
 
-  podAnnotations:
-    instrumentation.opentelemetry.io/inject-java: 'true'
-
-  podSecurityContext: {}
-
-  securityContext: {}
-
-  serviceAccount:
-    create: false
-    annotations: {}
-    name: ""
-
-
-  ports:
-    - name: http
-      subdomainName: order-srv-3
-      port: 5089
-      protocol: TCP
-      targetPort: 5089
-      routePolicy:
-        termination: edge
-        insecureEdgeTerminationPolicy: Redirect
 
   service:
-    - enabled: true
-      serviceType: ClusterIP
-      name: order-srv-3
-    - enabled: false
-      serviceType: LoadBalancer
-      name: order-srv-3-lb
+    type: ClusterIP
+    port: 5089
 
-  routes:
+  route:
     enabled: true
-    tls: true
-    annotations: {}
+    subdomainName: order-srv-3
 
-  ingress:
-    enabled: false
-    className: ""
-    tls: false
-    annotations: {}
-
-  secretsEnv: {}
 
   configmapEnv:
-    - name: ""
-      mount: ""
-      mountPath: ""
-      data:
-        POSTGRES_URL: jdbc:postgresql://testcase-postgres.office-management.svc.cluster.local:5432/zagadb
-        POSTGRES_USER: zaga
-        POSTGRES_PASSWORD: zaga123$
+    data:
+      POSTGRES_URL: jdbc:postgresql://testcase-postgres.observability-testcase.svc.cluster.local:5432/zagadb
+      POSTGRES_USER: zaga
+      POSTGRES_PASSWORD: zaga123$
 
-  probes:
-    readiness:
-    liveness:
-
-  volumes: {}
-
-  resources: {}
-
-  autoscaling:
-    enabled: false
-    minReplicas: 1
-    maxReplicas: 3
-    targetCPUUtilizationPercentage: 80
-    # targetMemoryUtilizationPercentage: 80
-
-  nodeSelector: {}
-
-  tolerations: []
-
-  affinity: {}
+  order-srv:
+    enabled: true
 
 
 ###########################################################################################
@@ -289,192 +91,58 @@ vendor-srv-1:
 
   replicaCount: 1
 
-  containerName: ""
-
   image:
-    registry: quay.io
-    username: zagaos
-    name: order-vendor-sample
-    pullPolicy: IfNotPresent
+    repository: quay.io/zagaos/order-vendor-sample
     tag: vendor-test-1
-    strategy: ""
-  languageFramework: spring-boot
-
-  imagePullSecrets: []
-  nameOverride: ""
-  fullnameOverride: ""
-
-  podAnnotations:
-    instrumentation.opentelemetry.io/inject-java: 'true'
-
-  podSecurityContext: {}
-
-  securityContext: {}
-
-  serviceAccount:
-    create: false
-    annotations: {}
-    name: ""
-
-
-  ports:
-    - name: http
-      subdomainName: vendor-srv
-      port: 8080
-      protocol: TCP
-      targetPort: 8080
-      routePolicy:
-        termination: edge
-        insecureEdgeTerminationPolicy: Redirect
+    pullPolicy: IfNotPresent
 
   service:
-    - enabled: true
-      serviceType: ClusterIP
-      name: vendor-srv
-    - enabled: false
-      serviceType: LoadBalancer
-      name: vendor-srv-lb
+    type: ClusterIP
+    port: 8080
 
-  routes:
+  route:
     enabled: true
-    tls: true
-    annotations: {}
+    subdomainName: vendor-srv
 
-  ingress:
-    enabled: false
-    className: ""
-    tls: false
-    annotations: {}
-
-  secretsEnv: {}
 
   configmapEnv:
-    - name: ""
-      mount: ""
-      mountPath: ""
-      data:
+    data:
         POSTGRES_PASSWORD: zaga123$
-        POSTGRES_URL: jdbc:postgresql://testcase-postgres.office-management.svc.cluster.local:5432/zagadb
+        POSTGRES_URL: jdbc:postgresql://testcase-postgres.observability-testcase.svc.cluster.local:5432/zagadb
         POSTGRES_USER: zaga
-        APP_APIURL: http://order-srv.office-management.svc.cluster.local:5089/orders/getOrders
-
-  probes:
-    readiness:
-    liveness:
-
-  volumes: {}
-
-  resources: {}
-
-  autoscaling:
-    enabled: false
-    minReplicas: 1
-    maxReplicas: 3
-    targetCPUUtilizationPercentage: 80
-    # targetMemoryUtilizationPercentage: 80
-
-  nodeSelector: {}
-
-  tolerations: []
-
-  affinity: {}
+        APP_APIURL: http://order-srv.observability-testcase.svc.cluster.local:5089/orders/getOrders
+  vendor-srv:
+    enabled: true
 
 
 ##################################################################################
 
 vendor-srv-2:
-
   replicaCount: 1
 
-  containerName: ""
-
   image:
-    registry: quay.io
-    username: zagaos
-    name: order-vendor-sample
-    pullPolicy: IfNotPresent
+    repository: quay.io/zagaos/order-vendor-sample
     tag: vendor-test-2
-    strategy: ""
-  languageFramework: spring-boot
+    pullPolicy: IfNotPresent
 
-  imagePullSecrets: []
-  nameOverride: ""
-  fullnameOverride: ""
-
-  podAnnotations:
-    instrumentation.opentelemetry.io/inject-java: 'true'
-
-  podSecurityContext: {}
-
-  securityContext: {}
-
-  serviceAccount:
-    create: false
-    annotations: {}
-    name: ""
-
-
-  ports:
-    - name: http
-      subdomainName: vendor-srv-2
-      port: 8080
-      protocol: TCP
-      targetPort: 8080
-      routePolicy:
-        termination: edge
-        insecureEdgeTerminationPolicy: Redirect
 
   service:
-    - enabled: true
-      serviceType: ClusterIP
-      name: vendor-srv-2
-    - enabled: false
-      serviceType: LoadBalancer
-      name: vendor-srv-2-lb
+    type: ClusterIP
+    port: 8080
 
-  routes:
+  route:
     enabled: true
-    tls: true
-    annotations: {}
-
-  ingress:
-    enabled: false
-    className: ""
-    tls: false
-    annotations: {}
-
-  secretsEnv: {}
+    subdomainName: vendor-srv-2
 
   configmapEnv:
-    - name: ""
-      mount: ""
-      mountPath: ""
+    data:
       data:
-        POSTGRES_URL: jdbc:postgresql://testcase-postgres.office-management.svc.cluster.local:5432/zagadb
+        POSTGRES_URL: jdbc:postgresql://testcase-postgres.observability-testcase.svc.cluster.local:5432/zagadb
         POSTGRES_USER: zaga
         POSTGRES_PASSWORD: zaga123$
-        APP_APIURL: http://order-srv-2.office-management.svc.cluster.local/orders/getOrders
-        
-  probes:
-    readiness:
-    liveness:
-
-  volumes: {}
-
-  resources: {}
-
-  autoscaling:
-    enabled: false
-    minReplicas: 1
-    maxReplicas: 3
-    targetCPUUtilizationPercentage: 80
-    # targetMemoryUtilizationPercentage: 80
-
-  nodeSelector: {}
-
-  tolerations: []
-
-  affinity: {}
+        APP_APIURL: http://order-srv-2.observability-testcase.svc.cluster.local/orders/getOrders
+  vendor-srv:
+    enabled: true
 ############################################################################
 
 vendor-srv-3:
@@ -482,194 +150,60 @@ vendor-srv-3:
 
   replicaCount: 1
 
-  containerName: ""
-
   image:
-    registry: quay.io
-    username: zagaos
-    name: order-vendor-sample
+    repository: quay.io/zagaos/order-vendor-sample:order-test-3
     pullPolicy: IfNotPresent
-    tag: vendor-test-3
-    strategy: ""
-  languageFramework: spring-boot
 
-  imagePullSecrets: []
-  nameOverride: ""
-  fullnameOverride: ""
-
-  podAnnotations:
-    instrumentation.opentelemetry.io/inject-java: 'true'
-
-  podSecurityContext: {}
-
-  securityContext: {}
-
-  serviceAccount:
-    create: false
-    annotations: {}
-    name: ""
-
-
-  ports:
-    - name: http
-      subdomainName: vendor-srv-3
-      port: 8080
-      protocol: TCP
-      targetPort: 8080
-      routePolicy:
-        termination: edge
-        insecureEdgeTerminationPolicy: Redirect
 
   service:
-    - enabled: true
-      serviceType: ClusterIP
-      name: vendor-srv-3
-    - enabled: false
-      serviceType: LoadBalancer
-      name: vendor-srv-3-lb
+    type: ClusterIP
+    port: 5089
 
-  routes:
+  route:
     enabled: true
-    tls: true
-    annotations: {}
+    subdomainName: order-srv-3
 
-  ingress:
-    enabled: false
-    className: ""
-    tls: false
-    annotations: {}
-
-  secretsEnv: {}
 
   configmapEnv:
-    - name: ""
-      mount: ""
-      mountPath: ""
-      data:
-        POSTGRES_URL: jdbc:postgresql://testcase-postgres.office-management.svc.cluster.local:5432/zagadb
-        POSTGRES_USER: zaga
-        POSTGRES_PASSWORD: zaga123$
-        APP_APIURL: http://order-srv-3.office-management.svc.cluster.local/orders/getOrders
-        
-  probes:
-    readiness:
-    liveness:
+    data:
+      POSTGRES_URL: jdbc:postgresql://testcase-postgres.observability-testcase.svc.cluster.local:5432/zagadb
+      POSTGRES_USER: zaga
+      POSTGRES_PASSWORD: zaga123$
 
-  volumes: {}
+  order-srv:
+    enabled: true
 
-  resources: {}
-
-  autoscaling:
-    enabled: false
-    minReplicas: 1
-    maxReplicas: 3
-    targetCPUUtilizationPercentage: 80
-    # targetMemoryUtilizationPercentage: 80
-
-  nodeSelector: {}
-
-  tolerations: []
-
-  affinity: {}
 
 
 ###################################################################################
 
 kafka-srv:
 
-
   replicaCount: 1
 
-  containerName: ""
-
   image:
-    registry: quay.io
-    username: zagaos
-    name: kafka-observ-testcase
-    pullPolicy: IfNotPresent
+    repository: quay.io/zagaos/kafka-observ-testcase
     tag: new-topicconf
-    strategy: ""
+    pullPolicy: IfNotPresent
 
-  languageFramework: spring-boot
-
-  imagePullSecrets: []
-  nameOverride: ""
-  fullnameOverride: ""
-
-  podAnnotations:
-      instrumentation.opentelemetry.io/inject-java: 'true'
-
-  podSecurityContext: {}
-
-  securityContext: {}
-
-  serviceAccount:
-    create: false
-    annotations: {}
-    name: ""
-
-
-  ports:
-    - name: http
-      subdomainName: kafka-srv-5
-      port: 8080
-      protocol: TCP
-      targetPort: 8080
-      routePolicy:
-        termination: edge
-        insecureEdgeTerminationPolicy: Redirect
 
   service:
-    - enabled: true
-      serviceType: ClusterIP
-      name: kafka-srv-5
-    - enabled: false
-      serviceType: LoadBalancer
-      name: kafka-srv-5-lb
+    type: ClusterIP
+    port: 5089
 
-  routes:
+  route:
     enabled: true
-    tls: true
-    annotations: {}
+    subdomainName: order-srv-3
 
-  ingress:
-    enabled: false
-    className: ""
-    tls: false
-    annotations: {}
-
-  secretsEnv: {}
 
   configmapEnv:
-    - name: ""
-      mount: ""
-      mountPath: ""
-      data:
-        KAFKA_PRODUCE_TOPIC: kafkasrv 
-        KAFKA_URL: telemetry-kafka-bootstrap.observability-kafka.svc.cluster.local:9092
-  env: {}
-  args: {}
+    data:
+      POSTGRES_URL: jdbc:postgresql://testcase-postgres.observability-testcase.svc.cluster.local:5432/zagadb
+      POSTGRES_USER: zaga
+      POSTGRES_PASSWORD: zaga123$
 
-  probes:
-    readiness:
-    liveness:
-
-  volumes: {}
-
-  resources: {}
-
-  autoscaling:
-    enabled: false
-    minReplicas: 1
-    maxReplicas: 3
-    targetCPUUtilizationPercentage: 80
-    # targetMemoryUtilizationPercentage: 80
-
-  nodeSelector: {}
-
-  tolerations: []
-
-  affinity: {}
+  kafka-srv:
+    enabled: true
 
 
 #########################################################################
