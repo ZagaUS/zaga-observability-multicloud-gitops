@@ -1,4 +1,4 @@
-{{- if .Values.query.enabled }}
+{{- if .Values.vendor-srv.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:

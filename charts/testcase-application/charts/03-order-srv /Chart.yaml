@@ -1,5 +1,5 @@
 apiVersion: v2
-name: order-srv-1
+name: order-srv-3
 description: A Helm chart for apm query api
 
 type: application

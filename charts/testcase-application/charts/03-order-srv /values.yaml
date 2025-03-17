@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: quay.io/zagaos/order-vendor-sample:order-test-2
+  repository: quay.io/zagaos/order-vendor-sample:order-test-3
   pullPolicy: IfNotPresent
 
 
@@ -11,7 +11,7 @@ service:
 
 route:
   enabled: true
-  subdomainName: order-srv-2
+  subdomainName: order-srv-3
 
 
 configmapEnv:

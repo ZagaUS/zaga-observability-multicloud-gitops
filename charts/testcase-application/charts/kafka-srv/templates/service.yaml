@@ -1,24 +1,14 @@
-{{- range .Values.service }}
-{{- if .enabled }}
+{{- if .Values.kafka-srv.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .name | default (printf "%s-%s" (include "kafka-srv-5.fullname" $) (.serviceType | lower)) }}
+  name: {{ .Chart.Name }}
   labels:
-    {{- include "kafka-srv-5.labels" $ | nindent 4 }}
+    app: {{ .Chart.Name }}
 spec:
-  type: {{ .serviceType }}
   ports:
-    {{- range $.Values.ports }}
-    - name: {{ .name }}
-      port: {{ .port }}
-      protocol: {{ .protocol }}
-      targetPort: {{ .targetPort }}
-    {{- end }}
+  - port: 5089
+    targetPort: 5089
   selector:
-    {{- include "kafka-srv-5.selectorLabels" $ | nindent 4 }}
-
----
-
-{{- end }}
+    app: {{ .Chart.Name }}
 {{- end }}

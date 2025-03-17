@@ -1,92 +1,25 @@
 replicaCount: 1
 
-containerName: ""
-
 image:
-  registry: quay.io
-  username: zagaos
-  name: kafka-observ-testcase
-  pullPolicy: IfNotPresent
+  repository: quay.io/zagaos/kafka-observ-testcase
   tag: new-topicconf
-  strategy: ""
+  pullPolicy: IfNotPresent
 
-languageFramework: spring-boot
-
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
-
-podAnnotations:
-    instrumentation.opentelemetry.io/inject-java: 'true'
-
-podSecurityContext: {}
-
-securityContext: {}
-
-serviceAccount:
-  create: false
-  annotations: {}
-  name: ""
-
-
-ports:
-  - name: http
-    subdomainName: kafka-srv-5
-    port: 8080
-    protocol: TCP
-    targetPort: 8080
-    routePolicy:
-      termination: edge
-      insecureEdgeTerminationPolicy: Redirect
 
 service:
-  - enabled: true
-    serviceType: ClusterIP
-    name: kafka-srv-5
-  - enabled: false
-    serviceType: LoadBalancer
-    name: kafka-srv-5-lb
+  type: ClusterIP
+  port: 5089
 
-routes:
+route:
   enabled: true
-  tls: true
-  annotations: {}
+  subdomainName: order-srv-3
 
-ingress:
-  enabled: false
-  className: ""
-  tls: false
-  annotations: {}
-
-secretsEnv: {}
 
 configmapEnv:
-  - name: ""
-    mount: ""
-    mountPath: ""
-    data:
-      KAFKA_PRODUCE_TOPIC: kafkasrv 
-      KAFKA_URL: telemetry-kafka-bootstrap.observability-kafka.svc.cluster.local:9092
-env: {}
-args: {}
+  data:
+    POSTGRES_URL: jdbc:postgresql://testcase-postgres.office-management.svc.cluster.local:5432/zagadb
+    POSTGRES_USER: zaga
+    POSTGRES_PASSWORD: zaga123$
 
-probes:
-  readiness:
-  liveness:
-
-volumes: {}
-
-resources: {}
-
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 3
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
+kafka-srv:
+  enabled: true
