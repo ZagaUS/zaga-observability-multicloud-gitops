@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
   repository: quay.io/zagaos/zagaobserve-apm-dashboard
-  tag: "v7"
+  tag: "v17"
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
@@ -14,4 +14,3 @@ backend:
 
 dashboard:
   enabled: true
-  

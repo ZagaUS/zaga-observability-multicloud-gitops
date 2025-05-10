@@ -4,7 +4,7 @@ image:
   query:
     name: query-api
     repository: quay.io/zagaos/zagaobserve-apm-query
-    tag: v2
+    tag: v3
     pullPolicy: IfNotPresent
   redis:
     name: redis

@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: quay.io/zagaos/apm-ingestion-pyiceberg
-  tag: 109fc4e
+  tag: v29
   pullPolicy: IfNotPresent
 configmapEnv:
   data:

@@ -3,7 +3,7 @@ apm-dashboard:
   replicaCount: 1
   image:
     repository: "quay.io/zagaos/zagaobserve-apm-dashboard"
-    tag: "v11"
+    tag: "v17"
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
@@ -18,7 +18,7 @@ apm-ingestion-logs:
 
   image:
     repository: "quay.io/zagaos/apm-ingestion-pyiceberg"
-    tag: v25
+    tag: v29
     pullPolicy: IfNotPresent
   configmapEnv:
     data:
@@ -43,7 +43,7 @@ apm-ingestion-metrics:
   replicaCount: 1
   image:
     repository: "quay.io/zagaos/apm-ingestion-pyiceberg"
-    tag: v25
+    tag: v29
     pullPolicy: IfNotPresent
   configmapEnv:
     data:
@@ -69,7 +69,7 @@ apm-ingestion-traces:
 
   image:
     repository: "quay.io/zagaos/apm-ingestion-pyiceberg"
-    tag: v25
+    tag: v29
     pullPolicy: IfNotPresent
   configmapEnv:
     data:

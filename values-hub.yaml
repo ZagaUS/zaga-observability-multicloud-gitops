@@ -7,7 +7,6 @@ clusterGroup:
     - golang-external-secrets
     #- config-demo
     #- hello-world
-    - observability-edge 
     - observability-apm
     - observability-datamesh
   subscriptions:
@@ -29,8 +28,7 @@ clusterGroup:
   projects:
     - hub
     #- config-demo
-    #- hello-world
-    - observability-edge 
+    #- hello-world 
     - observability-apm
     - observability-datamesh
     
@@ -88,41 +86,19 @@ clusterGroup:
       #namespace: hello-world
       #project: hello-world
       #path: charts/all/hello-world
-    apm:
-      name: apm
-      namespace: observability-apm
-      project: observability-apm
-      path: charts\apm
-    otel-collector:
-      name: otel-collector
-      namespace: observability-otel
-      project: observability-otel
-      path: charts\otel-collector
-    kafka:
-      name: kafka
-      namespace: observability-kafka
-      project: observability-kafka
-      path: charts\kafka
-    hive-metastore:
-      name: hive-metastore
-      namespace: observability-datamesh
-      project: observability-datamesh
-      path: charts/datamesh/hive-metastore
-    minio:
-      name: minio
-      namespace: observability-datamesh
-      project: observability-datamesh
-      path: charts\datamesh\minio
-    trino:
-      name: trino
-      namespace: observability-datamesh
-      project: observability-datamesh
-      path: charts\datamesh\trino
-    edge:
-      name: edge
-      namespace: observability-edge
-      project: observability-edge
-      path: charts\edge
+    #apm:
+     # name: apm
+     # namespace: observability-apm
+      #project: observability-apm
+      #ath: charts\apm
+    #otel-collector:
+     #namespace: observability-otel
+      #project: observability-otel
+      #path: charts\otel-collector
+   
+    
+   
+ 
 
 
     
