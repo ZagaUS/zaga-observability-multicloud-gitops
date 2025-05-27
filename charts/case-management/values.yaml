@@ -3,7 +3,7 @@ casemgt-backend-api:
   replicaCount: 1
   image:
     repository: "quay.io/zagaos/zagaobserve-casemanage-backend"
-    tag: "v5"
+    tag: "v6"
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
@@ -30,7 +30,7 @@ casemgt-dashboard:
   replicaCount: 1
   image:
     repository: "quay.io/zagaos/zagaobserve-casemanage-dashboard"
-    tag: "v12"
+    tag: "v14"
     pullPolicy: IfNotPresent
   service:
     type: ClusterIP
